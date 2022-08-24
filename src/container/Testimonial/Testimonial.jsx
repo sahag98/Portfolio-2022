@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
 import { AppWrap, MotionWrap } from '../../wrapper'
-import { urlFor, client } from '../../client'
+import { client } from '../../client'
 import './Testimonial.scss'
 
 const Testimonial = () => {
-  const [brands, setBrands] = useState([])
   const [testimonials, setTestimonials] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -17,7 +15,6 @@ const Testimonial = () => {
 
   useEffect(() => {
     const query = '*[_type=="testimonials"]';
-    const brandsQuery = '*[_type=="brands"]';
 
     client.fetch(query)
       .then((data) => {
@@ -25,23 +22,16 @@ const Testimonial = () => {
         setTestimonials(data)
 
       })
-
-    client.fetch(brandsQuery)
-      .then((data) => {
-        setBrands(data)
-
-      })
-
   }, [])
 
   const test = testimonials[currentIndex];
 
   return (
     <>
+      <h2 className="head-text">Favorite Bible verses</h2>
       {testimonials.length && (
         <>
           <div className="app__testimonial-item app__flex">
-            <img src={urlFor(testimonials[currentIndex].imgurl)} alt="testimonial" />
             <div className="app__testimonial-content">
               <p className="p-text">{test.feedback}</p>
               <div>
@@ -62,18 +52,6 @@ const Testimonial = () => {
           </div>
         </>
       )}
-
-      <div className="app__testimonial-brands app__flex">
-        {brands.map((brand) => (
-          <motion.div
-            whileInView={{ opacity: [0, 1] }}
-            transition={{ duration: 0.5, type: 'tween' }}
-            key={brand._id}
-          >
-            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
-          </motion.div>
-        ))}
-      </div>
     </>
   )
 }

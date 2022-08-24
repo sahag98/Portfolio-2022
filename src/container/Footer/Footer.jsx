@@ -19,21 +19,28 @@ const Footer = () => {
   }
 
   const handleSubmit = () => {
-    setLoading(true)
 
-    const contact = {
-      _type: 'contact',
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
+    if (name.length && email.length && message.length) {
+      setLoading(true)
+      const contact = {
+        _type: 'contact',
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      }
+
+      client.create(contact)
+        .then(() => {
+          setLoading(false)
+          setIsFormSubmitted(true)
+        })
+        .catch((err) => console.log(err))
     }
 
-    client.create(contact)
-      .then(() => {
-        setLoading(false)
-        setIsFormSubmitted(true)
-      })
-      .catch((err) => console.log(err))
+    else{
+      console.log("please fill out the form.")
+    }
+
   }
   return (
     <>
@@ -52,10 +59,10 @@ const Footer = () => {
       {!isFormSubmitted ? (
         <div className="app__footer-form app__flex">
           <div className="app__flex">
-            <input className='p-text' type="text" placeholder='Your name' name='name' value={name} onChange={handleChangeInput} />
+            <input className='p-text' type="text" placeholder='Your name' name='name' value={name} onChange={handleChangeInput} required />
           </div>
           <div className="app__flex">
-            <input className='p-text' type="email" placeholder='Your email' name='email' value={email} onChange={handleChangeInput} />
+            <input className='p-text' type="email" placeholder='Your email' name='email' value={email} onChange={handleChangeInput} required />
           </div>
           <div>
             <textarea
@@ -64,11 +71,12 @@ const Footer = () => {
               value={message}
               name="message"
               onChange={handleChangeInput}
+              required
             />
           </div>
           <button type='button' className='p-text' onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
         </div>
-      ): (
+      ) : (
         <div>
           <h3 className='head-text'>Thank you for getting in touch!</h3>
         </div>

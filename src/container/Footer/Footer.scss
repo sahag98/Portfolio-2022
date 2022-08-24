@@ -42,7 +42,7 @@
         }
 
         &:hover {
-            box-shadow: 0 0 25px #fef4f5;
+            box-shadow: 0 0 25px #ecd2d4;
         }
 
         @media screen and (max-width:450px) {
@@ -57,6 +57,10 @@
 
 .app__footer-cards .app__footer-card:last-child {
     background-color: #e8f4fd;
+
+    &:hover{
+        box-shadow: 0 0 25px #cbdbe8;
+    }
 }
 
 .app__footer-form{
@@ -105,6 +109,12 @@
         margin: 2rem 0 0 0;
         font-family: var(--font-base);
         cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover{
+            background-color: #3b45ab;
+            transform: scale(1.05);
+        }
 
     }
 
