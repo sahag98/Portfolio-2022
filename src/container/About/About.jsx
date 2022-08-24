@@ -30,7 +30,7 @@ const About = () => {
             className="app__profile-item"
             key={about.title + index}
           >
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
+            <img src={urlFor(about.imgUrl)} alt={about.title} loading="lazy" />
             <h2 className="bold-text" style={{ marginTop: 20 }}>{about.title}</h2>
             <p className="p-text" style={{ marginTop: 10 }}>{about.description}</p>
           </motion.div>
@@ -42,6 +42,6 @@ const About = () => {
 
 export default AppWrap(
   MotionWrap(About, 'app__about'),
-   'about',
-   "app__whitebg"
-  )
+  'about',
+  "app__whitebg"
+)
