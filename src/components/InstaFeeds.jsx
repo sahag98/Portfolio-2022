@@ -10,6 +10,7 @@ const InstaFeeds = ({ token, ...props }) => {
     //use useRef to store the latest value of the prop without firing the effect
     const tokenProp = useRef(token);
     tokenProp.current = token;
+    console.log(feeds)
 
     useEffect(() => {
         // this is to avoid memory leaks
@@ -34,7 +35,7 @@ const InstaFeeds = ({ token, ...props }) => {
             // cancel pending fetch request on component unmount
             abortController.abort();
         };
-    }, [props.limit])
+    }, [props.limit, props.token])
 
     return (
         <div className="container">

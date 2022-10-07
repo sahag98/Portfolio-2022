@@ -13,4 +13,4 @@ const InstaPage = () => {
     );
 }
 
-export default App;
+export default InstaPage;
