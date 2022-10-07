@@ -40,9 +40,9 @@ const Feed = (props) => {
     }
 
     return (
-        <React.Fragment>
+        <>
             {post}
-        </React.Fragment>
+        </>
     );
 }
 

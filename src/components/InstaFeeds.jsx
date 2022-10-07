@@ -19,7 +19,7 @@ const InstaFeeds = ({ token, ...props }) => {
         async function fetchInstagramPost() {
             try {
                 axios
-                    .get(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${props.limit}&access_token=${props.token}`)
+                    .get(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,caption&limit=${props.limit}&access_token=${token}`)
                     .then((resp) => {
                         setFeedsData(resp.data.data)
                     })
@@ -35,7 +35,7 @@ const InstaFeeds = ({ token, ...props }) => {
             // cancel pending fetch request on component unmount
             abortController.abort();
         };
-    }, [props.limit, props.token])
+    }, [props.limit, token])
 
     return (
         <div className="container">
