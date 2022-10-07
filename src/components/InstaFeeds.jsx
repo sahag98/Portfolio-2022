@@ -32,8 +32,9 @@ const InstaFeeds = ({ token, ...props }) => {
         fetchInstagramPost();
 
         return () => {
-            // cancel pending fetch request on component unmount
+            // cancel pending efetch request on component unmount
             abortController.abort();
+            console.log("abort")
         };
     }, [props.limit, token])
 
