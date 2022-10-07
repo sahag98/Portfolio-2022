@@ -37,7 +37,7 @@ const Footer = () => {
         .catch((err) => console.log(err))
     }
 
-    else{
+    else {
       console.log("please fill out the form.")
     }
 
@@ -57,12 +57,12 @@ const Footer = () => {
       </div>
 
       {!isFormSubmitted ? (
-        <div className="app__footer-form app__flex">
+        <form className="app__footer-form app__flex">
           <div className="app__flex">
             <input className='p-text' type="text" placeholder='Your name' name='name' value={name} onChange={handleChangeInput} required />
           </div>
           <div className="app__flex">
-            <input className='p-text' type="email" placeholder='Your email' name='email' value={email} onChange={handleChangeInput} required />
+            <input className='p-text' type="email" placeholder='Your email' name='email' value={email} onChange={handleChangeInput} required pattern='[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}' />
           </div>
           <div>
             <textarea
@@ -75,7 +75,7 @@ const Footer = () => {
             />
           </div>
           <button type='button' className='p-text' onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending...'}</button>
-        </div>
+        </form>
       ) : (
         <div>
           <h3 className='head-text'>Thank you for getting in touch!</h3>
