@@ -8,3 +8,5 @@ Features of Portfolio Website:
 - Skills & Experience
 - Favorite Bible verses section
 - Contact section
+
+![Capture](https://user-images.githubusercontent.com/89553922/202271432-2b732b41-0501-45af-8d25-3860440076c5.PNG)
